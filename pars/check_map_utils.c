@@ -3,61 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehjoo <jaehjoo@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: jun <jun@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 21:11:31 by hyeoan            #+#    #+#             */
-/*   Updated: 2023/06/05 16:41:01 by jaehjoo          ###   ########.fr       */
+/*   Updated: 2023/06/06 21:03:18 by jun              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int	is_line_empty(char *line)
-{
-	while (*line == ' ')
-		line++;
-	if (*line == '\0')
-		return (1);
-	return (0);
-}
-
-int	check_pre_validation_complete(t_parse_info *parse_info)
-{
-	if (parse_info->valid_no_texture_file_path_count == 1 \
-		&& parse_info->valid_so_texture_file_path_count == 1 \
-		&& parse_info->valid_we_texture_file_path_count == 1 \
-		&& parse_info->valid_ea_texture_file_path_count == 1 \
-		&& parse_info->vaild_floor_rgb_count == 1 \
-		&& parse_info->vaild_ceiling_rgb_count == 1)
-	{
-		return (0);
-	}
-	return (-1);
-}
-
-void	allocate_map(t_game_info *game_info, \
-								t_parse_info *parse_info, t_map_list *map_list)
-{
-	int		i;
-
-	i = 0;
-	game_info->map = (char **)malloc(sizeof(char *) * (game_info->height + 1));
-	if (game_info->map == NULL)
-		exit_error_control \
-		("Error : malloc returned NULL.(convert_list_to_map_array)\n", \
-											game_info, parse_info, map_list);
-	game_info->map[game_info->height] = 0;
-	while (i < game_info->height)
-	{
-		game_info->map[i] = (char *)malloc(sizeof(char) * (game_info->width + 1));
-		if (game_info->map[i] == NULL)
-			exit_error_control \
-			("Error : malloc returned NULL(convert_list_to_map_array)\n", \
-											game_info, parse_info, map_list);
-		game_info->map[i][game_info->width] = '\0';
-		i++;
-	}
-}
 
 void	convert_list_to_map_array(t_game_info *game_info, \
 								t_parse_info *parse_info, t_map_list *map_list)
@@ -89,6 +42,30 @@ void	convert_list_to_map_array(t_game_info *game_info, \
 	free_list(map_list->head_node);
 }
 
+void	allocate_map(t_game_info *game_info, \
+								t_parse_info *parse_info, t_map_list *map_list)
+{
+	int		i;
+
+	i = 0;
+	game_info->map = (char **)malloc(sizeof(char *) * (game_info->height + 1));
+	if (game_info->map == NULL)
+		exit_error_control \
+		("Error : malloc returned NULL.(convert_list_to_map_array)\n", \
+											game_info, parse_info, map_list);
+	game_info->map[game_info->height] = 0;
+	while (i < game_info->height)
+	{
+		game_info->map[i] = (char *)malloc(sizeof(char) * (game_info->width + 1));
+		if (game_info->map[i] == NULL)
+			exit_error_control \
+			("Error : malloc returned NULL(convert_list_to_map_array)\n", \
+											game_info, parse_info, map_list);
+		game_info->map[i][game_info->width] = '\0';
+		i++;
+	}
+}
+
 int	get_line_len(char *line)
 {
 	int	i;
@@ -103,4 +80,42 @@ int	get_line_len(char *line)
 		i++;
 	}
 	return (len);
+}
+
+int	is_column_valid(t_game_info *game_info, int y, int x)
+{
+	int	i;
+
+	if (game_info->map[y][x] != '1' && game_info->map[y][x] != '.')
+	{
+		i = y;
+		while (0 < i)
+		{
+			if (game_info->map[i][x] == '1')
+				break ;
+			else if (game_info->map[i][x] == '.')
+				return (0);
+			i--;
+		}
+		while (y < game_info->height)
+		{
+			if (game_info->map[y][x] == '1')
+				return (1);
+			else if (game_info->map[y][x] == '.')
+				return (0);
+			y++;
+		}
+	}
+	return (1);
+}
+
+int	is_map_edge_wall(t_game_info *game_info, int y, int x, int line_len)
+{
+	if (y == 0 || y == game_info->height - 1 || \
+		x == 0 || x == line_len - 1)
+	{
+		if (game_info->map[y][x] != '1' && game_info->map[y][x] != '.')
+			return (0);
+	}
+	return (1);
 }

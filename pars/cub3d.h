@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehjoo <jaehjoo@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: jun <jun@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:26:11 by hyeoan            #+#    #+#             */
-/*   Updated: 2023/06/05 16:09:09 by jaehjoo          ###   ########.fr       */
+/*   Updated: 2023/06/06 20:55:33 by jun              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,14 @@ Only the following characters are allowed in the map: 0 (empty space), \
 The map should be surrounded by walls (1) on all sides.\n"
 # define MAP_START_POSITION_ERROR "Error : Player start position error. \
 Only one player start position is allowed in the map.\n"
+# define NO 0
+# define SO 1
+# define WE 2
+# define EA 3
+# define CHECK_PATH 0
+# define CHECK_RGB 1
+# define ONLY_SPACE 2
+# define CHECK_MAP 3
 
 typedef struct s_parse_info
 {
@@ -84,25 +92,6 @@ typedef struct s_game_info
 	char	**map;
 }	t_game_info;
 
-enum	e_DIRECTION
-{
-	NO = 0,
-	SO,
-	WE,
-	EA,
-};
-
-enum	e_LINE_TYPE
-{
-	CHECK_PATH = 0,
-	CHECK_RGB,
-	ONLY_SPACE,
-	CHECK_MAP
-};
-
-//main
-void		parse_data(t_game_info *game_info, \
-							t_parse_info *parse_info, t_map_list *map_list);
 //split
 void		*finalize(char	**str_arr);
 size_t		ft_word_cnt(const char *str, char charset);
@@ -128,17 +117,20 @@ void		check_file(char *file_name, t_game_info *game_info, \
 						t_parse_info *parse_info, t_map_list *map_list);
 int			is_valid_file_extension(char *file_name);
 int			is_valid_xpm_file(char *file_name);
-// parse_utils
-
+// parse
+void		parse_data(t_game_info *game_info, \
+							t_parse_info *parse_info, t_map_list *map_list);
 int			check_line_type(char *line);
-int			update_texture_info(char **file, t_game_info *game_info, \
-								t_parse_info *parse_info);
 void		is_valid_texture_file_path(char *line, t_game_info *game_info, \
 								t_parse_info *parse_info, t_map_list *map_list);
 void		check_floor_and_ceiling_rgb(char *line, t_game_info *game_info, \
 								t_parse_info *parse_info, t_map_list *map_list);
 void		store_map_data_in_list(char *line, t_game_info *game_info, \
 								t_parse_info *parse_info, t_map_list *map_list);
+//parse_utils
+int			update_texture_info(char **file, t_game_info *game_info, \
+								t_parse_info *parse_info);
+int			is_line_empty(char *line);
 // rgb_utils
 int			ft_isdigit(int c);
 int			ft_atoi(const char *str);
@@ -147,18 +139,19 @@ int			get_rgb_color(char *rgb_value, t_game_info *game_info, \
 // check_map
 void		check_map_validity(char *line, t_game_info *game_info, \
 								t_parse_info *parse_info, t_map_list *map_list);
-int			is_valid_map_characters(char **line);
-int			is_only_one_start_position(char *line, t_parse_info *parse_info);
+int			is_valid_map_characters(char **line, t_parse_info *parse_info);
+int			is_only_one_start_position(t_parse_info *parse_info);
+int			check_pre_validation_complete(t_parse_info *parse_info);
 void		is_map_surround_by_wall(t_game_info *game_info, \
 								t_parse_info *parse_info, t_map_list *map_list);
 // check_map_utils
-int			is_line_empty(char *line);
-int			check_pre_validation_complete(t_parse_info *parse_info);
-void		allocate_map(t_game_info *game_info, \
-								t_parse_info *parse_info, t_map_list *map_list);
 void		convert_list_to_map_array(t_game_info *game_info, \
 								t_parse_info *parse_info, t_map_list *map_list);
+void		allocate_map(t_game_info *game_info, \
+								t_parse_info *parse_info, t_map_list *map_list);
 int			get_line_len(char *line);
+int			is_column_valid(t_game_info *game_info, int y, int x);
+int			is_map_edge_wall(t_game_info *game_info, int y, int x, int line_len);
 // finalize
 void		free_2d_array(char **array);
 void		exit_error_control(char *error_msg, t_game_info *game_info, \

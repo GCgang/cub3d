@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeoan <hyeoan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jun <jun@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 20:26:27 by hyeoan            #+#    #+#             */
-/*   Updated: 2023/06/01 14:04:31 by hyeoan           ###   ########.fr       */
+/*   Updated: 2023/06/06 20:32:50 by jun              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ void	check_file(char *file_name, t_game_info *game_info, \
 		exit_error_control \
 		("Error : Failed to open the file in read mode.(check_file)\n", \
 										game_info, parse_info, map_list);
-	if (read(parse_info->fd, NULL, 0) < 0)
-		exit_error_control("uuuuuuuuu\n", game_info, parse_info, map_list);
 }
 
 int	is_valid_file_extension(char *file_name)
