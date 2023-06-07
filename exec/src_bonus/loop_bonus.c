@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   loop.c                                             :+:      :+:    :+:   */
+/*   loop_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaehjoo <jaehjoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:00:24 by jaehjoo           #+#    #+#             */
-/*   Updated: 2023/06/07 15:14:27 by jaehjoo          ###   ########.fr       */
+/*   Updated: 2023/06/07 16:41:02 by jaehjoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/exec.h"
+#include "../include/exec_bonus.h"
 
 void	put_pixel_to_img(t_total *app, int y_s, int y_e, int x)
 {

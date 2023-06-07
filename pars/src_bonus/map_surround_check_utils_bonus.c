@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_surround_check_utils.c                         :+:      :+:    :+:   */
+/*   map_surround_check_utils_bonus.c                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaehjoo <jaehjoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 16:30:21 by hyeoan            #+#    #+#             */
-/*   Updated: 2023/06/07 17:22:33 by jaehjoo          ###   ########.fr       */
+/*   Updated: 2023/06/07 16:55:29 by jaehjoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 int	is_map_edge_wall(t_game_info *game_info, int y, int x)
 {
@@ -83,7 +83,6 @@ int	is_valid_line_end_point(t_game_info *game_info, int y)
 		}
 		i++;
 	}
-	free_2d_array(line);
 	return (1);
 }
 

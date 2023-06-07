@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec.h                                             :+:      :+:    :+:   */
+/*   exec_bonus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaehjoo <jaehjoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 11:59:42 by jaehjoo           #+#    #+#             */
-/*   Updated: 2023/06/07 14:05:38 by jaehjoo          ###   ########.fr       */
+/*   Updated: 2023/06/07 16:40:35 by jaehjoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXEC_H
-# define EXEC_H
+#ifndef EXEC_BONUS_H
+# define EXEC_BONUS_H
 
-# include "../../share/include/init.h"
-# include "structure.h"
+# include "../../share/include/init_bonus.h"
+# include "structure_bonus.h"
 # include "../../minilibx/mlx.h"
-# include "mlx_key.h"
+# include "mlx_key_bonus.h"
 
 void	chk_mlx_hook(t_total *app);
 int		main_loop(t_total *app);

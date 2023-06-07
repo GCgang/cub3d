@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   init_utils_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaehjoo <jaehjoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:02:41 by jaehjoo           #+#    #+#             */
-/*   Updated: 2023/06/05 17:24:07 by jaehjoo          ###   ########.fr       */
+/*   Updated: 2023/06/07 16:40:53 by jaehjoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/exec.h"
+#include "../include/exec_bonus.h"
 
 static void	set_plane(t_ray *ray, char tgt)
 {
@@ -76,22 +76,12 @@ void	set_player(int **map, int width, int height, t_vec *player)
 			tgt = (char)map[y][x];
 			if (tgt == 'N' || tgt == 'S' || tgt == 'E' || tgt == 'W')
 			{
-				player->x = x;
-				player->y = y;
+				player->x = x + 0.5;
+				player->y = y + 0.5;
 				return ;
 			}
 		}
 	}
-}
-
-void	map_free(char **map, int height)
-{
-	int	y;
-
-	y = -1;
-	while (++y < height)
-		free(map[y]);
-	free(map);
 }
 
 void	ft_bzero(void *ptr, size_t num)

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minimap.c                                          :+:      :+:    :+:   */
+/*   minimap_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaehjoo <jaehjoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:00:29 by jaehjoo           #+#    #+#             */
-/*   Updated: 2023/06/07 16:16:32 by jaehjoo          ###   ########.fr       */
+/*   Updated: 2023/06/07 16:41:09 by jaehjoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/exec.h"
+#include "../include/exec_bonus.h"
 
 static void	minimap_put_pixel_to_img(t_img *img, int x, int y, int color)
 {

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec.c                                             :+:      :+:    :+:   */
+/*   exec_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaehjoo <jaehjoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 11:59:47 by jaehjoo           #+#    #+#             */
-/*   Updated: 2023/06/07 17:19:07 by jaehjoo          ###   ########.fr       */
+/*   Updated: 2023/06/07 16:40:44 by jaehjoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/exec.h"
+#include "../include/exec_bonus.h"
 
 static int	**cpy_map(char **trans_map, int width, int height)
 {

@@ -5,6 +5,7 @@
 #import <AppKit/NSOpenGLView.h>
 
 #include <stdio.h>
+#include <math.h>
 
 #include "mlx_int.h"
 #include "mlx_new_window.h"
@@ -16,6 +17,7 @@ NSOpenGLPixelFormatAttribute pfa_attrs[] =
     NSOpenGLPFAOpenGLProfile, NSOpenGLProfileVersionLegacy,
     0
   };
+
 static const GLfloat pixel_vertexes[8] =
   {
     -1.0 , -1.0,
@@ -82,7 +84,7 @@ int get_mouse_button(NSEventType eventtype)
 {
   event_funct[event] = func;
   event_param[event] = param;
-  if (event == 6) // motion notify
+  if (event == 6 || event == 32) // motion notify && high precision motion notify
     {
       if (func == NULL)
 	[self setAcceptsMouseMovedEvents:NO];
@@ -337,33 +339,13 @@ int get_mouse_button(NSEventType eventtype)
 @implementation MlxWin
 
 - (id) initWithRect: (NSRect)rect andTitle: (NSString *)title pfaAttrs: (NSOpenGLPixelFormatAttribute *)attrs
-/*	여기오기전에 newwin->winid = [[MlxWin alloc] initWithRect:windowRect andTitle:str pfaAttrs:pfa_attrs]; 이렇게 인자를 주었는데
-	pfaAttrs변수인  NSOpenGLPixelFormatAttribute 예는 새로 초기화한 배열을 받는거 같다 왜냐면 값이 아무것도 없엇음
-*/
 {
   NSOpenGLPixelFormat* pixFmt = [[NSOpenGLPixelFormat alloc] initWithAttributes:attrs];
- /*
- 	class NSOpenGLPixelFormat : NSObject
-    이건 확인 바란다 하는거 많음
-    https://developer.apple.com/documentation/appkit/nsopenglpixelformat/
-    https://developer.apple.com/documentation/objectivec/nsobject
- */
+
   if ((self = [super initWithFrame:rect pixelFormat:pixFmt]) != nil)
-  /*
-    https://developer.apple.com/documentation/messages/msstickerbrowserview/1649376-initwithframe/
-  */
     {
       NSUInteger windowStyle = NSWindowStyleMaskTitled | NSWindowStyleMaskClosable | NSWindowStyleMaskMiniaturizable;
-      /*
-        typedef unsigned long NSUInteger;
-        https://developer.apple.com/documentation/objectivec/nsuinteger/
-        NSWindowStyleMaskTitled = 1 << 0;
-        https://developer.apple.com/documentation/appkit/nswindowstylemask/nswindowstylemasktitled/
-        NSWindowStyleMaskClosable = 1 << 1
-        https://developer.apple.com/documentation/appkit/nswindowstylemask/nswindowstylemaskclosable/
-        NSWindowStyleMaskMiniaturizable = 1 << 2
-        https://developer.apple.com/documentation/appkit/nswindowstylemask/nswindowstylemaskminiaturizable/
-      */
+
       win = [[NSWindowEvent alloc] initWithContentRect:rect
 				   styleMask:windowStyle
 				   backing:NSBackingStoreBuffered   // NSBackingStoreNonretained
@@ -504,6 +486,11 @@ int get_mouse_button(NSEventType eventtype)
   return (ctx);
 }
 
+- (NSWindowEvent *) win
+{
+  return (win);
+}
+
 
 - (void) pixelPutColor: (int)color X:(int)x Y:(int)y
 {
@@ -554,20 +541,6 @@ int get_mouse_button(NSEventType eventtype)
 {
   glClearColor(0, 0, 0, 0);
   glClear(GL_COLOR_BUFFER_BIT);
-  /*
-  색 삭제해주는거?
-  func glClearColor(
-    _ red: GLfloat,
-    _ green: GLfloat,
-    _ blue: GLfloat,
-    _ alpha: GLfloat
-	)
-	https://developer.apple.com/documentation/opengles/1617582-glclearcolor/
-    그냥 다 삭제적용하는거?
-	func glClear(_ mask: GLbitfield)
-	https://developer.apple.com/documentation/opengles/1617499-glclear/
-  */
-  
 }
 
 - (void) mlx_gl_draw_img:(mlx_img_list_t *)img andCtx:(mlx_img_ctx_t *)imgctx andX:(int)x andY:(int)y
@@ -685,11 +658,8 @@ void *mlx_new_window(mlx_ptr_t *mlx_ptr, int size_x, int size_y, char *title)
   newwin->pixmgt = 1;
   mlx_ptr->win_list = newwin;
 
-  NSRect windowRect = NSMakeRect(100, 100, size_x, size_y);// 이게 화면 만드는 거
-  /*
-  https://developer.apple.com/documentation/foundation/1391329-nsmakerect/
-  */
-  str = [NSString stringWithCString:title encoding:NSASCIIStringEncoding]; //title을 인코딩해줌
+  NSRect windowRect = NSMakeRect(100, 100, size_x, size_y);
+  str = [NSString stringWithCString:title encoding:NSASCIIStringEncoding];
   newwin->winid = [[MlxWin alloc] initWithRect:windowRect andTitle:str pfaAttrs:pfa_attrs];
   if (newwin->winid)
     if (![(id)(newwin->winid) pixel_management])
