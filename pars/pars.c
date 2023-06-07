@@ -43,9 +43,6 @@ void	parse_data(t_game_info *game_info, \
 
 int	check_line_type(char *line)
 {
-	int	i;
-
-	i = 0;
 	if (is_line_empty(line) == 1)
 		return (ONLY_SPACE);
 	while (*line == ' ')
