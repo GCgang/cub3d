@@ -6,7 +6,7 @@
 /*   By: hyeoan <hyeoan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:14:44 by hyeoan            #+#    #+#             */
-/*   Updated: 2023/06/07 13:09:39 by hyeoan           ###   ########.fr       */
+/*   Updated: 2023/06/07 16:12:49 by hyeoan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,10 @@ int	is_valid_map_characters(char **line, t_parse_info *parse_info)
 	i = 0;
 	while (line[0][i] != '\0')
 	{
-		if (line[0][i] == ' ')
-			line[0][i] = ' ';
-		else if (line[0][i] != '0' && line[0][i] != '1' \
+		if (line[0][i] != '0' && line[0][i] != '1' \
 			&& line[0][i] != 'N' && line[0][i] != 'S' \
-			&& line[0][i] != 'W' && line[0][i] != 'E')
+			&& line[0][i] != 'W' && line[0][i] != 'E' \
+			&& line[0][i] != ' ')
 		{
 			return (0);
 		}
@@ -73,16 +72,14 @@ void	is_map_surround_by_wall(t_game_info *game_info, \
 {
 	int	y;
 	int	x;
-	int	line_end;
 
 	y = 0;
 	while (y < game_info->height)
 	{
-		line_end = get_line_end(game_info->map[y]);
 		x = 0;
 		while (x < game_info->width)
 		{
-			if (is_map_edge_wall(game_info, y, x, line_end) == 0)
+			if (is_map_edge_wall(game_info, y, x) == 0)
 				exit_error_control(MAP_CONFIGURATION_ERROR, game_info, \
 													parse_info, map_list);
 			else

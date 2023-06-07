@@ -6,7 +6,7 @@
 /*   By: hyeoan <hyeoan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 21:11:31 by hyeoan            #+#    #+#             */
-/*   Updated: 2023/06/07 13:25:11 by hyeoan           ###   ########.fr       */
+/*   Updated: 2023/06/07 16:31:38 by hyeoan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,66 +65,4 @@ void	allocate_map(t_game_info *game_info, \
 		game_info->map[i][game_info->width] = '\0';
 		i++;
 	}
-}
-
-int	get_line_end(char *line)
-{
-	int	i;
-	int	end;
-
-	i = 0;
-	end = 0;
-	while (line[i] != '\0')
-	{
-		if (line[i] != '.')
-			end++;
-		i++;
-	}
-	return (end);
-}
-
-int	is_row_column_valid(t_game_info *game_info, int y, int x)
-{
-	int	i;
-
-	if (game_info->map[y][x] != '1' && game_info->map[y][x] != '.' \
-		&& game_info->map[y][x] != ' ')
-	{
-		if (game_info->map[y][x - 1] == ' ' || game_info->map[y][x + 1] == ' ')
-			return (0);
-		i = y;
-		while (0 < i--)
-		{
-			if (game_info->map[i][x] == '1')
-				break ;
-			else if (game_info->map[i][x] == '.' || game_info->map[i][x] == ' ')
-				return (0);
-		}
-		while (y < game_info->height)
-		{
-			if (game_info->map[y][x] == '1')
-				return (1);
-			else if (game_info->map[y][x] == '.' || game_info->map[y][x] == ' ')
-				return (0);
-			y++;
-		}
-	}
-	return (1);
-}
-
-int	is_map_edge_wall(t_game_info *game_info, int y, int x, int line_end)
-{
-	int	start;
-
-	start = 0;
-	while (game_info->map[y][start] == ' ')
-		start++;
-	if (y == 0 || y == game_info->height - 1 || \
-		x == start || x == line_end - 1)
-	{
-		if (game_info->map[y][start] != '1' && \
-			game_info->map[y][start] != '.')
-			return (0);
-	}
-	return (1);
 }

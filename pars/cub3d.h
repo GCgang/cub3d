@@ -6,7 +6,7 @@
 /*   By: hyeoan <hyeoan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:26:11 by hyeoan            #+#    #+#             */
-/*   Updated: 2023/06/07 13:49:47 by hyeoan           ###   ########.fr       */
+/*   Updated: 2023/06/07 16:32:54 by hyeoan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,10 +146,13 @@ void		convert_list_to_map_array(t_game_info *game_info, \
 								t_parse_info *parse_info, t_map_list *map_list);
 void		allocate_map(t_game_info *game_info, \
 								t_parse_info *parse_info, t_map_list *map_list);
-int			get_line_end(char *line);
-int			is_row_column_valid(t_game_info *game_info, int y, int x);
+// map_surround_check_utils
 int			is_map_edge_wall(t_game_info *game_info, \
-													int y, int x, int line_end);
+												int y, int x);
+int			is_row_column_valid(t_game_info *game_info, int y, int x);
+int			is_valid_line_end_point(t_game_info *game_info, int y);
+int			is_valid_line_start(char line_start);
+int			is_valid_line_end(char *line);
 // finalize
 void		free_2d_array(char **array);
 void		exit_error_control(char *error_msg, t_game_info *game_info, \
