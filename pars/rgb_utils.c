@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rgb_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeoan <hyeoan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jun <jun@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 21:07:51 by hyeoan            #+#    #+#             */
-/*   Updated: 2023/06/07 12:49:33 by hyeoan           ###   ########.fr       */
+/*   Updated: 2023/06/07 23:02:04 by jun              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	get_rgb_color(char *rgb_value, t_game_info *game_info, \
 
 	rgb = ft_split(rgb_value, ',');
 	if (rgb == NULL)
-		exit_error_control("Error : ft_split() returned NULL.(get_rgb_color)\n", \
+		exit_error_control("Error\nft_split() returned NULL.(get_rgb_color)\n", \
 											game_info, parse_info, map_list);
 	if (rgb[0] == NULL || rgb[1] == NULL || rgb[2] == NULL || rgb[3] != NULL)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeoan <hyeoan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jun <jun@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 20:12:53 by hyeoan            #+#    #+#             */
-/*   Updated: 2023/06/07 12:49:31 by hyeoan           ###   ########.fr       */
+/*   Updated: 2023/06/07 22:58:39 by jun              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	initialize(t_game_info *game_info, \
 {
 	map_list->head_node = (t_map_node *)malloc(sizeof(t_map_node));
 	if (map_list->head_node == NULL)
-		exit_error_control("Error : malloc returned NULL.(initialize)\n", \
+		exit_error_control("Error\nmalloc returned NULL.(initialize)\n", \
 											game_info, parse_info, map_list);
 	map_list->head_node->str = NULL;
 	map_list->head_node->next = NULL;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeoan <hyeoan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jun <jun@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 21:11:31 by hyeoan            #+#    #+#             */
-/*   Updated: 2023/06/07 16:31:38 by hyeoan           ###   ########.fr       */
+/*   Updated: 2023/06/07 22:59:28 by jun              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	allocate_map(t_game_info *game_info, \
 	game_info->map = (char **)malloc(sizeof(char *) * (game_info->height + 1));
 	if (game_info->map == NULL)
 		exit_error_control \
-		("Error : malloc returned NULL.(convert_list_to_map_array)\n", \
+		("Error\nmalloc returned NULL.(convert_list_to_map_array)\n", \
 											game_info, parse_info, map_list);
 	game_info->map[game_info->height] = 0;
 	while (i < game_info->height)
@@ -60,7 +60,7 @@ void	allocate_map(t_game_info *game_info, \
 													(game_info->width + 1));
 		if (game_info->map[i] == NULL)
 			exit_error_control \
-			("Error : malloc returned NULL(convert_list_to_map_array)\n", \
+			("Error\nmalloc returned NULL(convert_list_to_map_array)\n", \
 											game_info, parse_info, map_list);
 		game_info->map[i][game_info->width] = '\0';
 		i++;

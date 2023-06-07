@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeoan <hyeoan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jun <jun@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:26:11 by hyeoan            #+#    #+#             */
-/*   Updated: 2023/06/07 16:32:54 by hyeoan           ###   ########.fr       */
+/*   Updated: 2023/06/07 22:58:13 by jun              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,26 +21,26 @@
 # include <math.h>
 # include "get_next_line.h"
 
-# define ARGUMENT_ERROR "Error : Invalid argument count. \
+# define ARGUMENT_ERROR "Error\nInvalid argument count. \
 Please provide 2 arguments.\n"
-# define FILE_EXTENSION_ERROR "Error : Invalid file extension. \
+# define FILE_EXTENSION_ERROR "Error\nInvalid file extension. \
 The file extension must be .cub.\n"
-# define TEXTURE_FILE_PATH_ERROR "Error : Invalid texture file path. \
+# define TEXTURE_FILE_PATH_ERROR "Error\nInvalid texture file path. \
 Please provide a valid path to the texture file.\n"
-# define RGB_ERROR "Error : Invalid RGB value. \
+# define RGB_ERROR "Error\nInvalid RGB value. \
 The provided RGB value should represent the ceiling or floor color \
 and must be within the range of 0 to 255.\n"
-# define PRE_VALIDATION_ERROR "Pre-validation incomplete. \
+# define PRE_VALIDATION_ERROR "Error\nPre-validation incomplete. \
 Please ensure that the texture file path and ceiling/floor \
 RGB values are checked before performing map validation.\n"
-# define MAP_SEPARATED_ERROR "Error: Map content cannot be \
+# define MAP_SEPARATED_ERROR "Error\nMap content cannot be \
 separated by one or more empty lines.\n"
-# define MAP_VALUE_ERROR "Error : Invalid value. \
+# define MAP_VALUE_ERROR "Error\nInvalid value. \
 Only the following characters are allowed in the map: 0 (empty space), \
 1 (wall), N (north), W (west), S (south), E (east), and spaces.\n"
-# define MAP_CONFIGURATION_ERROR "Error : Invalid map configuration. \
+# define MAP_CONFIGURATION_ERROR "Error\nInvalid map configuration. \
 The map should be surrounded by walls (1) on all sides.\n"
-# define MAP_START_POSITION_ERROR "Error : Player start position error. \
+# define MAP_START_POSITION_ERROR "Error\nPlayer start position error. \
 Only one player start position is allowed in the map.\n"
 # define NO 0
 # define SO 1

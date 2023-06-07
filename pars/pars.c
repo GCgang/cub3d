@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeoan <hyeoan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jun <jun@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 19:10:48 by jun               #+#    #+#             */
-/*   Updated: 2023/06/07 12:49:32 by hyeoan           ###   ########.fr       */
+/*   Updated: 2023/06/07 23:01:32 by jun              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	is_valid_texture_file_path(char *line, t_game_info *game_info, \
 	texture_file = ft_split(line, ' ');
 	if (texture_file == NULL)
 		exit_error_control \
-		("Error : ft_split() returned NULL.(is_valid_texture_file_path)\n", \
+		("Error\nft_split() returned NULL.(is_valid_texture_file_path)\n", \
 		game_info, parse_info, map_list);
 	if (texture_file[0] == NULL || texture_file[1] == NULL \
 		|| texture_file[2] != NULL)
@@ -97,7 +97,7 @@ void	check_floor_and_ceiling_rgb(char *line, t_game_info *game_info, \
 	rgb_info = ft_split(line, ' ');
 	if (rgb_info == NULL)
 		exit_error_control \
-		("Error : ft_split() returned NULL.(check_floor_and_ceiling_rgb)\n", \
+		("Error\nft_split() returned NULL.(check_floor_and_ceiling_rgb)\n", \
 		game_info, parse_info, map_list);
 	if (rgb_info[0] == NULL || rgb_info[1] == NULL || rgb_info[2] != NULL)
 	{
@@ -131,14 +131,14 @@ void	store_map_data_in_list(char *line, t_game_info *game_info, \
 	map_node = (t_map_node *)malloc(sizeof(t_map_node));
 	if (map_node == NULL)
 		exit_error_control \
-		("Error : malloc returned NULL.(store_map_data_in_list)\n", \
+		("Error\nmalloc returned NULL.(store_map_data_in_list)\n", \
 											game_info, parse_info, map_list);
 	map_node->str = ft_strdup(line);
 	if (map_node->str == NULL)
 	{
 		free(map_node);
 		exit_error_control \
-		("Error : ft_strdup returned NULL.(store_map_data_in_list)\n", \
+		("Error\nft_strdup returned NULL.(store_map_data_in_list)\n", \
 											game_info, parse_info, map_list);
 	}
 	map_node->next = NULL;
