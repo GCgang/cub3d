@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jun <jun@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: hyeoan <hyeoan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:26:11 by hyeoan            #+#    #+#             */
-/*   Updated: 2023/06/06 20:55:33 by jun              ###   ########.fr       */
+/*   Updated: 2023/06/07 13:49:47 by hyeoan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,6 @@ typedef struct s_map_node
 
 typedef struct s_map_list
 {
-	int			height;
-	int			width;
 	t_map_node	*head_node;
 }	t_map_list;
 
@@ -86,14 +84,13 @@ typedef struct s_game_info
 	char	*we_texture_path;
 	int		floor_rgb;
 	int		ceiling_rgb;
-	int		direction[2];
 	int		height;
 	int		width;
 	char	**map;
 }	t_game_info;
 
 //split
-void		*finalize(char	**str_arr);
+void		*free_2d(char	**str_arr);
 size_t		ft_word_cnt(const char *str, char charset);
 size_t		get_word_len(const char *str, char charset);
 char		*put_word(const char *str, char charset);
@@ -149,11 +146,14 @@ void		convert_list_to_map_array(t_game_info *game_info, \
 								t_parse_info *parse_info, t_map_list *map_list);
 void		allocate_map(t_game_info *game_info, \
 								t_parse_info *parse_info, t_map_list *map_list);
-int			get_line_len(char *line);
-int			is_column_valid(t_game_info *game_info, int y, int x);
-int			is_map_edge_wall(t_game_info *game_info, int y, int x, int line_len);
+int			get_line_end(char *line);
+int			is_row_column_valid(t_game_info *game_info, int y, int x);
+int			is_map_edge_wall(t_game_info *game_info, \
+													int y, int x, int line_end);
 // finalize
 void		free_2d_array(char **array);
 void		exit_error_control(char *error_msg, t_game_info *game_info, \
 							t_parse_info *parse_info, t_map_list *map_list);
+void		finalize(t_map_list *map_list);
+
 #endif

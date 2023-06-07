@@ -1,4 +1,4 @@
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Werror -Wall -Wextra
 ARFLAGS = rc
 NAME = exec.a
 HEADER = ./include/

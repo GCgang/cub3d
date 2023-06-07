@@ -6,7 +6,7 @@
 /*   By: hyeoan <hyeoan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:20:41 by hyeoan            #+#    #+#             */
-/*   Updated: 2023/06/05 12:21:15 by hyeoan           ###   ########.fr       */
+/*   Updated: 2023/06/07 13:48:58 by hyeoan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ void	free_2d_array(char **array)
 	while (array[i])
 		free(array[i++]);
 	free(array);
+}
+
+void	finalize(t_map_list *map_list)
+{
+	if (map_list->head_node != NULL)
+		free(map_list->head_node);
 }
 
 void	exit_error_control(char *error_msg, t_game_info *game_info, \

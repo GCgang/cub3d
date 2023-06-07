@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jun <jun@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: hyeoan <hyeoan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 21:11:31 by hyeoan            #+#    #+#             */
-/*   Updated: 2023/06/06 21:03:18 by jun              ###   ########.fr       */
+/*   Updated: 2023/06/07 13:25:11 by hyeoan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	convert_list_to_map_array(t_game_info *game_info, \
 	int			j;
 	t_map_node	*tmp;
 
-	if (check_pre_validation_complete(parse_info) == -1)
-		exit_error_control(PRE_VALIDATION_ERROR, \
-											game_info, parse_info, map_list);
+	if (is_only_one_start_position(parse_info) == 0)
+		exit_error_control(MAP_START_POSITION_ERROR, game_info, \
+													parse_info, map_list);
 	allocate_map(game_info, parse_info, map_list);
 	i = 0;
 	tmp = map_list->head_node->next;
@@ -56,7 +56,8 @@ void	allocate_map(t_game_info *game_info, \
 	game_info->map[game_info->height] = 0;
 	while (i < game_info->height)
 	{
-		game_info->map[i] = (char *)malloc(sizeof(char) * (game_info->width + 1));
+		game_info->map[i] = (char *)malloc(sizeof(char) * \
+													(game_info->width + 1));
 		if (game_info->map[i] == NULL)
 			exit_error_control \
 			("Error : malloc returned NULL(convert_list_to_map_array)\n", \
@@ -66,42 +67,44 @@ void	allocate_map(t_game_info *game_info, \
 	}
 }
 
-int	get_line_len(char *line)
+int	get_line_end(char *line)
 {
 	int	i;
-	int	len;
+	int	end;
 
 	i = 0;
-	len = 0;
+	end = 0;
 	while (line[i] != '\0')
 	{
 		if (line[i] != '.')
-			len++;
+			end++;
 		i++;
 	}
-	return (len);
+	return (end);
 }
 
-int	is_column_valid(t_game_info *game_info, int y, int x)
+int	is_row_column_valid(t_game_info *game_info, int y, int x)
 {
 	int	i;
 
-	if (game_info->map[y][x] != '1' && game_info->map[y][x] != '.')
+	if (game_info->map[y][x] != '1' && game_info->map[y][x] != '.' \
+		&& game_info->map[y][x] != ' ')
 	{
+		if (game_info->map[y][x - 1] == ' ' || game_info->map[y][x + 1] == ' ')
+			return (0);
 		i = y;
-		while (0 < i)
+		while (0 < i--)
 		{
 			if (game_info->map[i][x] == '1')
 				break ;
-			else if (game_info->map[i][x] == '.')
+			else if (game_info->map[i][x] == '.' || game_info->map[i][x] == ' ')
 				return (0);
-			i--;
 		}
 		while (y < game_info->height)
 		{
 			if (game_info->map[y][x] == '1')
 				return (1);
-			else if (game_info->map[y][x] == '.')
+			else if (game_info->map[y][x] == '.' || game_info->map[y][x] == ' ')
 				return (0);
 			y++;
 		}
@@ -109,12 +112,18 @@ int	is_column_valid(t_game_info *game_info, int y, int x)
 	return (1);
 }
 
-int	is_map_edge_wall(t_game_info *game_info, int y, int x, int line_len)
+int	is_map_edge_wall(t_game_info *game_info, int y, int x, int line_end)
 {
+	int	start;
+
+	start = 0;
+	while (game_info->map[y][start] == ' ')
+		start++;
 	if (y == 0 || y == game_info->height - 1 || \
-		x == 0 || x == line_len - 1)
+		x == start || x == line_end - 1)
 	{
-		if (game_info->map[y][x] != '1' && game_info->map[y][x] != '.')
+		if (game_info->map[y][start] != '1' && \
+			game_info->map[y][start] != '.')
 			return (0);
 	}
 	return (1);

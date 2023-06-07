@@ -6,7 +6,7 @@
 /*   By: hyeoan <hyeoan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 20:12:53 by hyeoan            #+#    #+#             */
-/*   Updated: 2023/05/31 20:14:57 by hyeoan           ###   ########.fr       */
+/*   Updated: 2023/06/07 12:49:31 by hyeoan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ void	initialize(t_game_info *game_info, \
 											game_info, parse_info, map_list);
 	map_list->head_node->str = NULL;
 	map_list->head_node->next = NULL;
-	map_list->height = 0;
-	map_list->width = 0;
 	ft_memset((void *)game_info, 0, sizeof(t_game_info));
 	ft_memset((void *)parse_info, 0, sizeof(t_parse_info));
 }

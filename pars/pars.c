@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jun <jun@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: hyeoan <hyeoan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 19:10:48 by jun               #+#    #+#             */
-/*   Updated: 2023/06/06 21:03:05 by jun              ###   ########.fr       */
+/*   Updated: 2023/06/07 12:49:32 by hyeoan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ void	parse_data(t_game_info *game_info, \
 		free(parse_info->line);
 		parse_info->line = get_next_line(parse_info->fd);
 	}
-	if (is_only_one_start_position(parse_info) == 0)
-		exit_error_control(MAP_START_POSITION_ERROR, game_info, \
-													parse_info, map_list);
+	if (check_pre_validation_complete(parse_info) == -1)
+		exit_error_control(PRE_VALIDATION_ERROR, \
+											game_info, parse_info, map_list);
 }
 
 int	check_line_type(char *line)

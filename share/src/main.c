@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jun <jun@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: hyeoan <hyeoan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 15:33:19 by jaehjoo           #+#    #+#             */
-/*   Updated: 2023/06/06 20:34:40 by jun              ###   ########.fr       */
+/*   Updated: 2023/06/07 13:52:08 by hyeoan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ int	main(int argc, char **argv)
 	parse_data(&game_info, &parse_info, &map_list);
 	convert_list_to_map_array(&game_info, &parse_info, &map_list);
 	is_map_surround_by_wall(&game_info, &parse_info, &map_list);
+	finalize(&map_list);
 	exec(&game_info);
+	return (0);
 }

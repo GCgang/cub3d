@@ -6,13 +6,13 @@
 /*   By: hyeoan <hyeoan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:06:05 by hyeoan            #+#    #+#             */
-/*   Updated: 2023/05/29 15:06:52 by hyeoan           ###   ########.fr       */
+/*   Updated: 2023/06/07 12:52:13 by hyeoan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	*finalize(char	**str_arr)
+void	*free_2d(char	**str_arr)
 {
 	size_t	i;
 
@@ -93,7 +93,7 @@ char	**ft_split(const char *str, char charset)
 		{
 			str_arr[i] = put_word(str, charset);
 			if (str_arr[i] == NULL)
-				return (finalize(str_arr));
+				return (free_2d(str_arr));
 			i++;
 		}
 		while (*str != '\0' && *str != charset)

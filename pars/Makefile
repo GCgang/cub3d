@@ -1,4 +1,4 @@
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Werror -Wall -Wextra
 AR = ar
 ARFLAGS = rc
 NAME = pars.a
