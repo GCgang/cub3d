@@ -6,7 +6,7 @@
 /*   By: jaehjoo <jaehjoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:00:24 by jaehjoo           #+#    #+#             */
-/*   Updated: 2023/06/07 15:14:27 by jaehjoo          ###   ########.fr       */
+/*   Updated: 2023/06/08 16:53:43 by jaehjoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ static void	draw_bg(t_total *app, int win_x, int win_y)
 	while (cur.y < win_y)
 	{
 		if (cur.y <= win_y / 2)
-			app->wall.color = app->bg_color[0];
-		else
 			app->wall.color = app->bg_color[1];
+		else
+			app->wall.color = app->bg_color[0];
 		cur.x = 0;
 		while (cur.x < win_x)
 		{
