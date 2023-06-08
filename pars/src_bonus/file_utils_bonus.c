@@ -6,7 +6,7 @@
 /*   By: jaehjoo <jaehjoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 20:26:27 by hyeoan            #+#    #+#             */
-/*   Updated: 2023/06/07 16:46:55 by jaehjoo          ###   ########.fr       */
+/*   Updated: 2023/06/08 12:54:54 by jaehjoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	check_file(char *file_name, t_game_info *game_info, \
 	parse_info->fd = open(file_name, O_RDONLY);
 	if (parse_info->fd == -1)
 		exit_error_control \
-		("Error : Failed to open the file in read mode.(check_file)\n", \
+		("Error\nFailed to open the file in read mode.(check_file)\n", \
 										game_info, parse_info, map_list);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jaehjoo <jaehjoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 11:59:47 by jaehjoo           #+#    #+#             */
-/*   Updated: 2023/06/07 17:19:07 by jaehjoo          ###   ########.fr       */
+/*   Updated: 2023/06/08 11:49:30 by jaehjoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static int	exec_init(t_total *app, t_game_info *game_info)
 {
 	app->map = cpy_map(game_info->map, game_info->width, game_info->height);
 	if (!app->map)
-		return (1);
+		return (print_error("Malloc Error(cpy_map)\n"));
 	set_player(app->map, game_info->width, game_info->height, &app->ray.player);
 	set_dir(&app->ray, app->map[(int)app->ray.player.y]
 	[(int)app->ray.player.x]);
@@ -79,11 +79,11 @@ static int	exec_init(t_total *app, t_game_info *game_info)
 	app->win.x = 1920;
 	app->win.y = 1080;
 	app->mlx.mouse = app->win.x / 2;
+	app->map_scale.x = game_info->width;
+	app->map_scale.y = game_info->height;
 	app->mlx.mlx = mlx_init();
 	app->mlx.win = mlx_new_window(app->mlx.mlx, app->win.x,
 			app->win.y, "cub3D");
-	app->map_scale.x = game_info->width;
-	app->map_scale.y = game_info->height;
 	return (set_image(app, game_info));
 }
 

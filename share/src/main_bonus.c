@@ -26,6 +26,7 @@ int	main(int argc, char **argv)
 	convert_list_to_map_array(&game_info, &parse_info, &map_list);
 	is_map_surround_by_wall(&game_info, &parse_info, &map_list);
 	finalize(&map_list);
-	exec(&game_info);
+	if (exec(&game_info))
+		return (1);
 	return (0);
 }

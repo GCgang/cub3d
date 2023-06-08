@@ -6,7 +6,7 @@
 /*   By: jaehjoo <jaehjoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 20:12:53 by hyeoan            #+#    #+#             */
-/*   Updated: 2023/06/07 16:55:29 by jaehjoo          ###   ########.fr       */
+/*   Updated: 2023/06/08 12:55:22 by jaehjoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	initialize(t_game_info *game_info, \
 {
 	map_list->head_node = (t_map_node *)malloc(sizeof(t_map_node));
 	if (map_list->head_node == NULL)
-		exit_error_control("Error : malloc returned NULL.(initialize)\n", \
+		exit_error_control("Error\nmalloc returned NULL.(initialize)\n", \
 											game_info, parse_info, map_list);
 	map_list->head_node->str = NULL;
 	map_list->head_node->next = NULL;

@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.h                                             :+:      :+:    :+:   */
+/*   error_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaehjoo <jaehjoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 15:38:02 by jaehjoo           #+#    #+#             */
-/*   Updated: 2023/06/08 11:53:12 by jaehjoo          ###   ########.fr       */
+/*   Created: 2023/06/08 11:51:09 by jaehjoo           #+#    #+#             */
+/*   Updated: 2023/06/08 11:51:10 by jaehjoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INIT_H
-# define INIT_H
+#include "../include/exec_bonus.h"
 
-# include "../../pars/cub3d.h"
-# include "../../exec/include/exec.h"
-
-int	exec(t_game_info *game_info);
-
-#endif
+int	print_error(char *str)
+{
+	printf("Error : ");
+	printf("%s\n", str);
+	return (1);
+}

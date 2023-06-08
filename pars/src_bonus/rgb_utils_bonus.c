@@ -6,7 +6,7 @@
 /*   By: jaehjoo <jaehjoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 21:07:51 by hyeoan            #+#    #+#             */
-/*   Updated: 2023/06/07 16:55:29 by jaehjoo          ###   ########.fr       */
+/*   Updated: 2023/06/08 12:56:05 by jaehjoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	get_rgb_color(char *rgb_value, t_game_info *game_info, \
 
 	rgb = ft_split(rgb_value, ',');
 	if (rgb == NULL)
-		exit_error_control("Error : ft_split() returned NULL.(get_rgb_color)\n", \
+		exit_error_control("Error\nft_split() returned NULL.(get_rgb_color)\n", \
 											game_info, parse_info, map_list);
 	if (rgb[0] == NULL || rgb[1] == NULL || rgb[2] == NULL || rgb[3] != NULL)
 	{

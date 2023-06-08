@@ -6,7 +6,7 @@
 /*   By: jaehjoo <jaehjoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 13:08:33 by jaehjoo           #+#    #+#             */
-/*   Updated: 2023/06/07 16:41:05 by jaehjoo          ###   ########.fr       */
+/*   Updated: 2023/06/08 12:20:49 by jaehjoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,20 @@ int	map_free(char **trans_map, int **map, int height, int map_h)
 {
 	int	y;
 
-	y = -1;
-	while (++y < height)
-		free(trans_map[y]);
-	free(trans_map);
+	if (trans_map)
+	{
+		y = -1;
+		while (++y < height)
+			free(trans_map[y]);
+		free(trans_map);
+	}
 	if (map)
 	{
 		y = -1;
 		while (++y < map_h)
-			free(map[map_h]);
+			free(map[y]);
+		free(map);
 	}
-	free(map);
 	return (0);
 }
 
@@ -75,6 +78,8 @@ int	image_free(t_game_info *game_info, t_total *app, int flag)
 				break ;
 			idx++;
 		}
-		return (1);
+		mlx_destroy_window(app->mlx.mlx, app->mlx.win);
+		map_free(NULL, app->map, 0, (int)app->map_scale.y);
+		return (print_error("Don't validated image file\n"));
 	}
 }

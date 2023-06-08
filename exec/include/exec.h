@@ -34,5 +34,6 @@ void	ft_bzero(void *ptr, size_t num);
 void	set_player(int **map, int width, int height, t_vec *player);
 int		**map_set(char **trans_map, int **map, int width, int height);
 int		image_free(t_game_info *game_info, t_total *app, int flag);
+int		print_error(char *str);
 
 #endif

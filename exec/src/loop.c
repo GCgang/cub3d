@@ -50,7 +50,6 @@ static void	draw_bg(t_total *app, int win_x, int win_y)
 
 int	main_loop(t_total *app)
 {
-	mlx_mouse_hide();
 	draw_bg(app, app->win.x, app->win.y);
 	raycasting(app);
 	minimap(app);

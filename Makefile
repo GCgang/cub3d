@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jaehjoo <jaehjoo@student.42seoul.kr>       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/06/08 11:51:13 by jaehjoo           #+#    #+#              #
+#    Updated: 2023/06/08 11:51:14 by jaehjoo          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 CFLAGS = -Werror -Wall -Wextra
 PARSA = ./pars/pars.a
 EXECA = ./exec/exec.a
@@ -16,10 +28,10 @@ PARS_OBJ = $(addsuffix .o, $(addprefix pars/, $(PARS_SRC)))
 PARS_BNS_SRC = check_map_utils_bonus check_map_bonus file_utils_bonus finalize_bonus ft_split_bonus get_next_line_utils_bonus get_next_line_bonus initialize_bonus list_utils_bonus pars_bonus parse_utils_bonus rgb_utils_bonus str_utils_bonus map_surround_check_utils_bonus
 PARS_BNS_SRCC = $(addsuffix .c, $(addprefix pars/src_bonus/, $(PARS_BNS_SRC)))
 PARS_BNS_OBJ = $(addsuffix .o, $(addprefix pars/src_bonus/, $(PARS_BNS_SRC)))
-EXEC_SRC = exec hook mouse_hook key_hook loop raycasting init_utils map_utils minimap texture
+EXEC_SRC = exec hook mouse_hook key_hook loop raycasting init_utils map_utils minimap texture error
 EXEC_SRCC = $(addsuffix .c, $(addprefix exec/src/, $(EXEC_SRC)))
 EXEC_OBJ = $(addsuffix .c, $(addprefix exec/src/, $(EXEC_SRC)))
-EXEC_BNS_SRC = exec_bonus hook_bonus mouse_hook_bonus key_hook_bonus loop_bonus raycasting_bonus init_utils_bonus map_utils_bonus minimap_bonus texture_bonus
+EXEC_BNS_SRC = exec_bonus hook_bonus mouse_hook_bonus key_hook_bonus loop_bonus raycasting_bonus init_utils_bonus map_utils_bonus minimap_bonus texture_bonus error_bonus
 EXEC_BNS_SRCC = $(addsuffix .c, $(addprefix exec/src_bonus/, $(EXEC_BNS_SRC)))
 EXEC_BNS_OBJ = $(addsuffix .c, $(addprefix exec/src_bonus/, $(EXEC_BNS_SRC)))
 HEADER = ./share/init.h
