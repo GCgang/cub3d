@@ -6,7 +6,7 @@
 /*   By: jaehjoo <jaehjoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:01:12 by jaehjoo           #+#    #+#             */
-/*   Updated: 2023/06/05 19:59:31 by jaehjoo          ###   ########.fr       */
+/*   Updated: 2023/06/13 10:43:51 by jaehjoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ static int	search_location(t_total *app)
 	else if (app->ray.ray_dir.y < 0 && app->ray.side == 1)
 		return (2);
 	else if (app->ray.ray_dir.x > 0 && app->ray.side == 0)
-		return (0);
-	else
 		return (1);
+	else
+		return (0);
 }
 
 static int	calculate_tex(t_total *app)

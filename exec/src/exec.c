@@ -6,7 +6,7 @@
 /*   By: jaehjoo <jaehjoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 11:59:47 by jaehjoo           #+#    #+#             */
-/*   Updated: 2023/06/08 11:49:30 by jaehjoo          ###   ########.fr       */
+/*   Updated: 2023/06/13 10:49:37 by jaehjoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static int	exec_init(t_total *app, t_game_info *game_info)
 	app->map[(int)app->ray.player.y][(int)app->ray.player.x] = 0;
 	app->wall.texture = 64;
 	app->move_speed = 0.15;
-	app->rotate_speed = 0.05;
+	app->rotate_speed = 0.1;
 	app->bg_color[0] = game_info->floor_rgb;
 	app->bg_color[1] = game_info->ceiling_rgb;
 	app->win.x = 1920;
